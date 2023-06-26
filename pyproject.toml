@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "dash-cont-py"
+version = "0.1.0"
+description = "\"Dashboard do Curso de ADF Python\""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "dash_cont_py"}]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+wget = "^3.2"
+pandas = "^2.0.2"
+shiny = "^0.3.3"
+shinywidgets = "^0.2.1"
+plotly = "^5.14.1"
+numpy = "^1.24.3"
+rsconnect-python = "^1.17.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

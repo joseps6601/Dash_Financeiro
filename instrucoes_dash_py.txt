@@ -1,0 +1,58 @@
+ - Automatização do Dashboard no Python
+	- Construído o Dashboard, é necessário colocá-lo em um servidor online.
+	- Além disso, é possível criar uma forma de "rodar" os códigos de tempos em tempos.
+
+ - Como fazer isso?
+      - Shinyapps + Github Actions
+	- Shinyapps:
+		- permite colocar o Dash online;
+		- limitações: é necessário criar uma conta e usuário não pagantes possuem limites de 5 dashboards na conta
+
+	- Github actions: permite construir ações em um repositório do Github. Essas ações permitem "rodar" os arquivos periodicamente;
+	
+	- Com as duas funcionalidades, é possível criar ações no actions para coletar os dados e realizar o deploy no Shinyapps.
+
+Instruções:
+
+- Criação do Dashboard
+
+1. Criar o ambiente do codespaces 
+
+2. Criar o Dashboard
+
+- Automatização do Dashboard
+
+1. Melhorar o código do Dashboard (leitura e disponibilização dos arquivos)
+ 1.1 verifique se está tudo ok
+
+2. Instalar o poetry (biblioteca de gerenciamento de pacotes)
+ 2.1 pip install poetry
+ 2.2 poetry init (inicializa o gerenciador)
+ 2.3 poetry add "pacote" adiciona o pacote
+
+3. Criar o arquivo para automatização do Github Actions
+ 3.1 .github/workflows/update.yaml
+		Dentro do arquivo, conterá um código do actions, que:
+		 - criar a periodicidade que roda o codico: crontab.guru
+		1) Criará um ambiente virtual (OS)
+		2) Instalará o Python e outras dependências
+		3) Instalará os pacotes necessários (usando o poetry)
+		4) "Rodará" os arquivos de coleta
+		5) Realizará o deploy no Shinyapps, de acordo com as informações da conta colocadas no repositório.
+
+4. Conectar a conta do shinyapps com o repositório (chaves)
+	É necessário permitir que o Github tenha as credenciais para produzir o sistema no site do Shiny. Para realizar essa configuração
+		1) selecionamos dentro do repositório do Github, a aba Settings -> Secrets -> Actions -> New repository Secret
+		2) No bloco que será aberto, é necessário colocar o nome (Name*) que referenciará o Secret no Workflow do Github Actions e em Secret* colocaremos os Tokens do Shiny App.
+
+		Criaremos três Secret, um para o usuário, um para o token e outro para o secret do Shiny App. Os seus nomes serão:
+
+		RSCONNECT_USER
+		RSCONNECT_TOKEN
+		RSCONNECT_SECRET
+
+		Cada nome estará referenciado no Workflow do Github Actions.
+
+		3) E os Secrets de cada nome? Obtemos através da conta criada no site do Shiny App, acessando na Aba lateral superior a opção Tokens, "+ Add Token", e em "Show".
+
+5. Commit

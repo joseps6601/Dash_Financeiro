@@ -1,0 +1,53 @@
+on:
+  push:
+    branches: [main, master]
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+name: Automatização de Dashboard
+
+jobs:
+  Deploy:
+
+    runs-on: ubuntu-22.04
+
+    env:
+      RSCONNECT_USER: ${{ secrets.RSCONNECT_USER }}
+      RSCONNECT_TOKEN: ${{ secrets.RSCONNECT_TOKEN }}
+      RSCONNECT_SECRET: ${{ secrets.RSCONNECT_SECRET }}
+
+    steps:
+      - name: Clonar esse repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar o Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Instalar bibliotecas Python do projeto
+        run: poetry install --no-root
+      
+      - name: Coleta, Tratamento e Remoção de Arquivos
+        run: |
+          poetry run python ./01_coleta.py
+          poetry run python ./02_tratamento_e_disponibilizacao.py
+          poetry run python ./03_remocao_arquivos.py
+      
+      - name: Publicação da Dashboard Shiny
+        run: |
+          poetry run rsconnect add --account '${{ secrets.RSCONNECT_USER }}' --name '${{ secrets.RSCONNECT_USER }}' --token '${{ secrets.RSCONNECT_TOKEN }}' --secret '${{ secrets.RSCONNECT_SECRET }}'
+          poetry run rsconnect deploy shiny Dashboard/ --title dashboard-cont-py
+
+      - name: Commit results
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add .
+          git commit -m "Update data and deploy shiny app" || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
