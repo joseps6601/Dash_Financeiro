@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "dash-financeiro"
+version = "0.1.0"
+description = "\"Dashboard Curso Analise de Demonstrativo Financeiro - Análise Macro\""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "dash_financeiro"}]
+
+[tool.poetry.dependencies]
+python = "~3.9"
+rsconnect = "^0.1.3"
+wget = "^3.2"
+pandas = "^2.0.2"
+shiny = "^0.4.0"
+shinywidgets = "^0.2.1"
+plotly = "^5.15.0"
+numpy = "^1.25.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
