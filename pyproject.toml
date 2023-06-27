@@ -1,21 +1,20 @@
 [tool.poetry]
 name = "dash-cont-py"
 version = "0.1.0"
-description = "\"Dashboard do Curso de ADF Python\""
+description = "\"Dashboard do curso analise de demonstrativo financeiro - Analise macro\""
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "dash_cont_py"}]
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = "~3.10"
 wget = "^3.2"
 pandas = "^2.0.2"
-shiny = "^0.3.3"
+numpy = "^1.25.0"
+shiny = "^0.4.0"
 shinywidgets = "^0.2.1"
-plotly = "^5.14.1"
-numpy = "^1.24.3"
-rsconnect-python = "^1.17.1"
+plotly = "^5.15.0"
 
 
 [build-system]
