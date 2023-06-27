@@ -10,16 +10,16 @@ import numpy as np
 import pandas as pd
 
 # Lê o arquivo do nomes das companhias e transforma em lista
-names_companies = pd.read_csv('names_companies.csv', sep = ';')['DENOM_SOCIAL'].tolist()
+names_companies = pd.read_csv('Dashboard/names_companies.csv', sep = ';')['DENOM_SOCIAL'].tolist()
 
 # Realiza a leitura dos arquivos
-bp = pd.read_csv('bp.csv', sep = ';', encoding = 'latin1')
-dre = pd.read_csv('dre.csv', sep = ';', encoding = 'latin1')
-dfc = pd.read_csv('dfc.csv',sep = ';', encoding = 'latin1')
-indic_liq = pd.read_csv('indic_liq.csv', sep = ';', encoding = 'latin1')
-indic_end = pd.read_csv('indic_end.csv', sep = ';', encoding = 'latin1')
-indic_enf = pd.read_csv('indic_enf.csv', sep = ';', encoding = 'latin1')
-indic_rent = pd.read_csv('indic_rent.csv', sep = ';', encoding = 'latin1')
+bp = pd.read_csv('Dashboard/bp.csv', sep = ';', encoding = 'latin1')
+dre = pd.read_csv('Dashboard/dre.csv', sep = ';', encoding = 'latin1')
+dfc = pd.read_csv('Dashboard/dfc.csv',sep = ';', encoding = 'latin1')
+indic_liq = pd.read_csv('Dashboard/indic_liq.csv', sep = ';', encoding = 'latin1')
+indic_end = pd.read_csv('Dashboard/indic_end.csv', sep = ';', encoding = 'latin1')
+indic_enf = pd.read_csv('Dashboard/indic_enf.csv', sep = ';', encoding = 'latin1')
+indic_rent = pd.read_csv('Dashboard/indic_rent.csv', sep = ';', encoding = 'latin1')
 
 # Parte 1: Interface do usuário
 app_ui = ui.page_fluid(
