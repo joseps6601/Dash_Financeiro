@@ -1,19 +1,17 @@
 [tool.poetry]
-name = "dash-cont-py"
+name = "dash-financeiro"
 version = "0.1.0"
-description = "\"Dashboard do curso analise de demonstrativo financeiro - Analise macro\""
+description = "\"DashBoard analise de demonstrativo financeiro - Analise Macro\""
 authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "dash_cont_py"}]
+packages = [{include = "dash_financeiro"}]
 
 [tool.poetry.dependencies]
-python = "~3.10"
+python = "~3.9"
 wget = "^3.2"
-pandas = "^2.0.2"
 numpy = "^1.25.0"
-shiny = "^0.4.0"
-shinywidgets = "^0.2.1"
+pandas = "^2.0.2"
 plotly = "^5.15.0"
 
 
