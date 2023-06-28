@@ -42,7 +42,7 @@ jobs:
       - name: Publicação da Dashboard Shiny
         run: |
           poetry run rsconnect add --account '${{ secrets.RSCONNECT_USER }}' --name '${{ secrets.RSCONNECT_USER }}' --token '${{ secrets.RSCONNECT_TOKEN }}' --secret '${{ secrets.RSCONNECT_SECRET }}'
-          poetry run rsconnect deploy shiny Dashboard/ --title dashboard-cont-py
+          poetry run rsconnect deploy shiny Dashboard/ --title dash_financeiro
 
       - name: Commit results
         run: |
